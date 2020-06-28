@@ -1,0 +1,23 @@
+<form id="ability-use-form">
+    <p>{{ localize "carbon2185.AbilityUseHint" }} <strong>{{item.name}}</strong> {{ localize "carbon2185.Ability" }}.</p>
+
+    <p class="notes">
+    {{#if recharges}}
+    {{ localize "carbon2185.AbilityUseRechargeHint" }} <strong>{{#if isCharged}}{{ localize "carbon2185.AbilityUseCharged" }}{{else}}{{ localize "carbon2185.AbilityUseDepleted" }}{{/if}}</strong>.</p>
+    {{else}}
+    {{ localize "carbon2185.AbilityUseWarnStart" }} <strong>{{uses.value}} {{ localize "carbon2185.of" }} {{uses.max}}</strong> {{ localize "carbon2185.AbilityUseWarnEnd" }} {{perLabel}}.
+    {{/if}}
+    {{#unless canUse}}
+    {{ localize "carbon2185.AbilityUseCantUse" }}
+    {{/unless}}
+    </p>
+
+    <div class="form-group">
+        <label class="checkbox">{{ localize "carbon2185.AbilityUseConsume" }} <input type="checkbox" name="consume" {{checked consume}}/></label>
+        {{#if hasPlaceableTemplate}}
+        <label class="checkbox">{{ localize "carbon2185.PlaceTemplate" }}
+            <input type="checkbox" name="placeTemplate" checked/>
+        </label>
+        {{/if}}
+    </div>
+</form>

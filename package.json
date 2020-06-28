@@ -1,0 +1,14 @@
+{
+  "name": "foundry-carbon2185",
+  "version": "0.0.1",
+  "description": "carbon2185 to foundry",
+  "main": " ",
+  "repository": "https://github.com/klpq/foundry-carbon2185.git",
+  "author": "Pyro Jack <pyrolovesbuns@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "gulp",
+    "build": "gulp css"
+  }
+}

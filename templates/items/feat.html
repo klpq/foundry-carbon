@@ -1,0 +1,73 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+
+    {{!-- Item Sheet Header --}}
+    <header class="sheet-header flexrow">
+        <img class="profile" src="{{item.img}}" title="{{item.name}}" data-edit="img"/>
+
+        <div class="header-details flexrow">
+            <h1 class="charname">
+                <input name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'carbon2185.ItemName' }}"/>
+            </h1>
+
+            <div class="item-subtitle">
+                <h4 class="item-type">{{itemType}}</h4>
+                <span class="item-status">{{itemStatus}}</span>
+            </div>
+
+            <ul class="summary">
+                <li>
+                    {{labels.featType}}
+                </li>
+                <li>
+                    <input type="text" name="data.requirements" value="{{data.requirements}}" placeholder="{{ localize 'carbon2185.Requirements' }}"/>
+                </li>
+                <li>
+                    <input type="text" name="data.source" value="{{data.source}}" placeholder="{{ localize 'carbon2185.Source' }}"/>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    {{!-- Item Sheet Navigation --}}
+    <nav class="sheet-navigation tabs" data-group="primary">
+        <a class="item active" data-tab="description">{{ localize "carbon2185.Description" }}</a>
+        <a class="item" data-tab="details">{{ localize "carbon2185.Details" }}</a>
+    </nav>
+
+    {{!-- Item Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description Tab --}}
+        {{> "systems/carbon2185/templates/items/parts/item-description.html"}}
+
+        {{!-- Details Tab --}}
+        <div class="tab details" data-group="primary" data-tab="details">
+
+            <h3 class="form-header">{{ localize "carbon2185.FeatureUsage" }}</h3>
+
+            {{!-- Item Activation Template --}}
+            {{> "systems/carbon2185/templates/items/parts/item-activation.html"}}
+
+            {{!-- Recharge Requirement --}}
+            {{#if data.activation.type}}
+            <div class="form-group recharge">
+                <label>{{ localize "carbon2185.FeatureActionRecharge" }}</label>
+                <div class="form-fields">
+                    <span>{{ localize "carbon2185.FeatureRechargeOn" }}</span>
+                    <input type="text" name="data.recharge.value" value="{{data.recharge.value}}"
+                           data-dtype="Number" placeholder="{{ localize 'carbon2185.FeatureRechargeResult' }}"/>
+                    <label class="checkbox">
+                        {{ localize "carbon2185.Charged" }}
+                        <input type="checkbox" name="data.recharge.charged" {{checked data.recharge.charged}}/>
+                    </label>
+                </div>
+            </div>
+            {{/if}}
+
+            <h3 class="form-header">{{ localize "carbon2185.FeatureAttack" }}</h3>
+
+            {{!-- Item Action Template --}}
+            {{> "systems/carbon2185/templates/items/parts/item-action.html"}}
+        </div>
+    </section>
+</form>
